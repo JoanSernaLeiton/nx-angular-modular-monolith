@@ -1,0 +1,20 @@
+{
+  "name": "ui-shared",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui/shared/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:ui", "type:ui"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/ui/shared"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

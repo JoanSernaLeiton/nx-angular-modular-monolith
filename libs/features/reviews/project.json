@@ -1,0 +1,20 @@
+{
+  "name": "feature-reviews",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/reviews/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:features", "type:feature"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/features/reviews"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

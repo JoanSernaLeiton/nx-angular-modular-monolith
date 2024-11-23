@@ -1,0 +1,20 @@
+{
+  "name": "feature-books",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/books/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:features", "type:feature"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/features/books"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

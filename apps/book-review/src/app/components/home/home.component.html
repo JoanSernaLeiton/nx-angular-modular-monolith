@@ -1,0 +1,78 @@
+<div class="home-container">
+  <mat-card class="main-card">
+    <div class="header">
+      <h1>Book Review Dashboard</h1>
+      <div class="header-actions">
+        <div class="search-box">
+          <mat-icon>search</mat-icon>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+
+    <mat-card-content>
+      <mat-tab-group
+        class="custom-tabs"
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+        [selectedIndex]="selectedTab()"
+        (selectedIndexChange)="setTab($event)"
+      >
+        <!-- Books Tab -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label" [class.active]="selectedTab() === 0">
+              <mat-icon>book</mat-icon>
+              <span>Books</span>
+              <div class="tab-counter">{{ booksCount() }}</div>
+            </div>
+          </ng-template>
+          <div class="tab-content">
+            <lib-book-list />
+          </div>
+        </mat-tab>
+
+        <!-- Authors Tab -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label" [class.active]="selectedTab() === 1">
+              <mat-icon>person</mat-icon>
+              <span>Authors</span>
+              <div class="tab-counter">{{ authorsCount() }}</div>
+            </div>
+          </ng-template>
+          <div class="tab-content">
+            <lib-author-list/>
+          </div>
+        </mat-tab>
+
+        <!-- Reviews Tab -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label" [class.active]="selectedTab() === 2">
+              <mat-icon>rate_review</mat-icon>
+              <span>Reviews</span>
+              <div class="tab-counter">{{ reviewsCount() }}</div>
+            </div>
+          </ng-template>
+          <div class="tab-content">
+            <lib-review-list/>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

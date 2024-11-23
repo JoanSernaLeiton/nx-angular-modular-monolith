@@ -1,0 +1,77 @@
+<div class="header-actions">
+  <h2>Reviews List</h2>
+  <button mat-flat-button color="primary">
+    <mat-icon>add</mat-icon>
+    Add Review
+  </button>
+</div>
+
+@if (isLoading()) {
+<div class="loading-spinner">
+  <mat-spinner diameter="40"></mat-spinner>
+</div>
+} @if (!isLoading() && reviews().length) {
+<table mat-table [dataSource]="reviews()" class="mat-elevation-z2">
+  <ng-container matColumnDef="book">
+    <th mat-header-cell *matHeaderCellDef>Book</th>
+    <td mat-cell *matCellDef="let review">
+      <div class="book-info">
+        <mat-icon>book</mat-icon>
+        {{ review.book }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="user">
+    <th mat-header-cell *matHeaderCellDef>User</th>
+    <td mat-cell *matCellDef="let review">
+      <div class="user-info">
+        <mat-icon>person</mat-icon>
+        {{ review.user }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rating">
+    <th mat-header-cell *matHeaderCellDef>Rating</th>
+    <td mat-cell *matCellDef="let review">
+      <div class="rating">
+        <mat-icon class="star-icon">star</mat-icon>
+        {{ review.rating }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="comment">
+    <th mat-header-cell *matHeaderCellDef>Comment</th>
+    <td mat-cell *matCellDef="let review">
+      {{ review.comment | slice : 0 : 50 }}...
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let review">
+      <div class="date-info">
+        <mat-icon>calendar_today</mat-icon>
+        {{ review.date | date : 'mediumDate' }}
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let review">
+      <button mat-icon-button color="primary" matTooltip="Edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matTooltip="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+}

@@ -1,0 +1,28 @@
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  h2 {
+    color: white;
+  }
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-icon {
+  color: #ffd700;
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
